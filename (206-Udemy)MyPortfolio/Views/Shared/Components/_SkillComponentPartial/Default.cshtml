@@ -1,0 +1,24 @@
+﻿@model List<_206_Udemy_MyPortfolio.DAL.Entities.Skill>
+@{
+    int percentage = 0;
+    string percentageStr = "";
+}
+
+<div class="col-six tab-full right">
+    <h3>Programlama Dilleri ve Teknolojiler</h3>
+
+    <ul class="skill-bars">
+
+        @foreach (var item in Model)
+        {
+            percentage = @item.Value;
+            percentageStr = "percent" + percentage;//percent95
+
+            <li>
+                <div class="progress @percentageStr"><span>@item.Value%</span></div>
+                <strong>@item.Title</strong>
+            </li>
+
+        }
+    </ul>
+</div>

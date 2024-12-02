@@ -1,0 +1,167 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pop-up Form Örneği</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Pop-up stil */
+        .popup {
+            display: none; /* Başlangıçta gizli */
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        /* Arka planı karartmak için */
+        .overlay {
+            display: none; /* Başlangıçta gizli */
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        /* Form alanları */
+        input[type="text"], input[type="email"], input[type="date"], ] {
+            width: 100%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #45a049;
+            }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            color: #888;
+        }
+    </style>
+</head>
+
+<section id="about" class="s-about target-section">
+
+    <div class="row narrow section-intro has-bottom-sep">
+        <div class="col-full text-center">
+            <h3>Hakkımda</h3>
+            <h1>@ViewBag.aboutTitle</h1>
+            <p class="lead">@ViewBag.aboutSubDescription</p>
+        </div>
+    </div>
+
+    <div class="row about-content">
+
+        <div class="col-six tab-full left">
+            <h3>Hakkımda!</h3>
+
+            <p>
+                @ViewBag.aboutDetail
+            </p>
+        </div>
+
+
+
+        @await Component.InvokeAsync("_SkillComponentPartial")
+
+
+
+    </div> <!-- end about-content -->
+
+    <div class="row about-content about-content--buttons">
+
+        <div class="col-six tab-full left">
+            <a href="/CV.pdf" download="/CV.pdf" class="btn btn--primary full-width">CV'mi İndir</a>
+        </div>
+
+        <body>
+
+            <!-- Ana sayfada bir buton -->
+            <div class="col-six tab-full right">
+                <button onclick="openPopup()" class="btn full-width">Bana Yazın</button>
+            </div>
+
+            <!-- Arka plan overlay -->
+            <div class="overlay" id="overlay" onclick="closePopup()"></div>
+
+            <!-- Pop-up Formu -->
+            <div class="popup" id="popup">
+                <span class="close-btn" onclick="closePopup()">&times;</span>
+                <h3>Formu Doldurun</h3>
+                <form method="post">
+                    <label for="NameSurname">İsim Soyisim</label>
+                    <input type="text" id="NameSurname" name="NameSurname" required>
+
+                    <label for="Subject">Konu</label>
+                    <input type="text" id="Subject" name="Subject" required>
+
+                    <label for="Email">Email</label>
+                    <input type="email" id="Email" name="Email" required>
+
+                    <label for="MessageDetail">Mesaj Detayı:</label>
+                    <textarea id="MessageDetail" name="MessageDetail" required></textarea>
+
+                    <button type="submit">Gönder</button>
+                </form>
+            </div>
+
+
+
+        </body>
+
+    </div> <!-- end about-content buttons -->
+    @await Component.InvokeAsync("_ExperienceComponentPartial")
+
+</section>
+
+
+
+
+<script>
+    // Pop-up'ı açma
+    function openPopup() {
+        document.getElementById('overlay').style.display = 'block';
+        document.getElementById('popup').style.display = 'block';
+    }
+
+    // Pop-up'ı kapama
+    function closePopup() {
+        document.getElementById('overlay').style.display = 'none';
+        document.getElementById('popup').style.display = 'none';
+    }
+</script>
+
+
+
+</html>

@@ -1,0 +1,103 @@
+﻿@model List<_206_Udemy_MyPortfolio.DAL.Entities.Project>
+
+@{
+    int count = 0;
+    string frameStyle = "";
+}
+
+<style>
+    /* Resmin bulunduğu kapsayıcıyı ortalamak için Flexbox kullanıyoruz */
+    .item-folio__thumb {
+        display: flex; /* Flexbox kullanarak düzenliyoruz */
+        justify-content: center; /* Yatayda ortalamak için */
+        align-items: center; /* Dikeyde ortalamak için */
+        position: relative; /* Gölgeleme ve diğer öğelerle etkileşim için */
+    }
+
+    .thumb-link {
+        display: block; /* Resmin tam olarak kapsayıcıyı kaplamasını sağlamak için */
+    }
+
+    .item-folio__thumb img {
+        max-width: 100%; /* Resmin kapsayıcıya sığmasını sağlamak için */
+        height: auto; /* Orantıyı korumak için */
+    }
+
+</style>
+
+<section id="works" class="s-works target-section">
+
+    <div class="row narrow section-intro has-bottom-sep">
+        <div class="col-full">
+            <h3>Portfolio</h3>
+            <h1>Son Projelerim</h1>
+
+            <p class="lead">
+                Son projelerimde modern yazılım geliştirme yöntemlerini kullanarak kullanıcı dostu, etkili ve performans odaklı çözümler ürettim. Özellikle ASP.NET Core tabanlı projelerde Entity Framework ile veritabanı yönetimi, MVC mimarisi ile modüler yapı oluşturma ve frontend teknolojileriyle (HTML, CSS, JavaScript) entegre çalışarak projelerimi tamamladım. Öne çıkan çalışmalarımdan biri, bir portföy yönetim sistemi olup, burada kullanıcı geri bildirimleri ve mesaj gönderimi gibi işlevleri dinamik olarak yöneten bir yapı geliştirdim. Yenilikçi teknolojileri öğrenmeye ve projelerde uygulamaya devam ediyorum.
+            </p>
+        </div>
+    </div>
+
+    <div class="row masonry-wrap">
+        <div class="masonry">
+
+
+            @foreach (var item in Model)
+            {
+                count++;
+
+                @if (count % 2 == 1)
+                {
+                    frameStyle = "width:500px;height:400px;";
+                }
+                else
+                {
+                    frameStyle = "width:400px;height:500px;";
+                }
+
+                <div class="masonry__brick">
+                    <div class="item-folio">
+
+                        <div class="item-folio__thumb" style="@frameStyle">
+                            <a href="@item.ImageUrl" class="thumb-link" title="@item.Title" data-size="1050x700">
+                                <img src="@item.ImageUrl"
+                                     srcset="@item.ImageUrl 1x, @item.ImageUrl 2x" alt="">
+                                <span class="shadow-overlay"></span>
+                            </a>
+                        </div>
+
+                        <div class="item-folio__text">
+                            <h3 class="item-folio__title">
+                                @item.Title
+                            </h3>
+                            <p class="item-folio__cat">
+                                @item.Title
+                            </p>
+                        </div>
+
+                        @* <a href="@item.Link" class="item-folio__project-link" title="Project link">
+                    <i href="@item.Link" class="im im-link"></i>
+                    </a> *@
+
+                        <a href="@item.Link" class="item-folio__project-link" title="Project link">
+                            <i class="im im-link"></i> <!-- Burada 'i' etiketi sadece stil için, bağlantıyı 'a' etiketi veriyor -->
+                        </a>
+
+                        <div class="item-folio__caption">
+                            <p>
+                                @item.Description
+                            </p>
+                        </div>
+
+                    </div> <!-- end item-folio -->
+                </div> <!-- end masonry__brick -->
+                @if (count == 4)
+                {
+                    count++;
+                }
+            }
+
+        </div>
+    </div> <!-- end masonry -->
+
+</section>
