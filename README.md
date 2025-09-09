@@ -1,20 +1,32 @@
 We are rapidly continuing our training under the guidance of Murat Yücedağ within the scope of MY YAZILIM EĞİTİM AKADEMİ DANIŞMANLIK. As part of this, I have completed the Udemy course offered for free, "Developing a Dynamic Portfolio with Admin Panel Using ASP.NET Core 1/2."
 
 🚀 Technologies Used:
+
 🖱 ASP.NET Core 6.0: A modern and powerful framework for developing web applications.
+
 📑 MSSQL Server: A widely used system for database management and storage.
+
 🔎 LINQ: An effective tool for querying and processing data.
+
 📘 Entity Framework (Code First): An ORM tool that simplifies database operations.
+
 🛠 View Components: Used to create and organize page content dynamically.
+
 ✉️ Message Sending Module: Allows users to send messages via the admin panel.
+
 🗂 To-Do List: Tasks can be recorded and managed efficiently.
+
 🔔 Incoming Messages: Messages from users are displayed in the admin panel.
+
 📡 Social Media Management: Provides the ability to edit social media account information.
 
+
 🖥️ User Interface:
+
 The user interface was designed so that users can easily access information such as "About Me," "Work Experience," "Projects," "Skills," and "References." Social media accounts and dynamic statistics are visually presented, while the message sending feature enables users to communicate directly with the admin.
 
 🔑 Admin Panel:
+
 The admin panel supports full CRUD operations. Admins can add new tasks to the to-do list and perform updates as needed. Additionally, incoming messages are displayed in this panel and can be managed easily. The statistics section in the admin panel is more comprehensive compared to the user interface.
 
 
